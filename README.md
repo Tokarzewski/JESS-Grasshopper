@@ -1,2 +1,2 @@
 # JESS-Grasshopper
- JESS client integration with Grasshopper
+JESS client integration with Grasshopper
