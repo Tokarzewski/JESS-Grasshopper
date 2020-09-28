@@ -1,4 +1,0 @@
-# Run all cases, and wait for results
-java -jar jess_client.jar -nogui -cfg client.cfg -job [project folder] -type JEPLUS_PROJECT -output [output folder]
-# Run a random sample using LHS, and wait for results
-java -jar jess_client.jar -nogui -cfg client.cfg -job [project folder] -type JEPLUS_PROJECT -subset LHS_RANDOM -subset_param 20 -result SUMMARY_TABLE -output [output folder]
