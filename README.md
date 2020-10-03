@@ -1,4 +1,4 @@
 # JESS-Grasshopper
-[JESS](http://jeplus.org/wiki/doku.php?id=docs:jess_service) integration with [Grasshopper](https://www.grasshopper3d.com/)
+[Grasshopper](https://www.grasshopper3d.com/) components for [JESS](http://jeplus.org/wiki/doku.php?id=docs:jess_service)
 
-Examples of JESS API are available at [JESS-Web-API](https://github.com/jeplus/JESS-Web-API)
+Code is mostly based on examples from [JESS-Web-API](https://github.com/jeplus/JESS-Web-API)
