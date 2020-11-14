@@ -113,7 +113,7 @@ Building,
     25,                      !- Maximum Number of Warmup Days
     6;                       !- Minimum Number of Warmup Days
 
-Timestep,60;
+Timestep,2;
 SurfaceConvectionAlgorithm:Inside,TARP;
 SurfaceConvectionAlgorithm:Outside,SimpleCombined;
 HeatBalanceAlgorithm,ConductionTransferFunction;
