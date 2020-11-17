@@ -1,5 +1,4 @@
-import requests
-import fire
+import requests, fire
 
 def cookie(user_email, password):
     """
@@ -19,7 +18,20 @@ def cookie(user_email, password):
     # Post request
     r = requests.post(UserApi + "auth", headers=headers, json=body)
     #r = requests.post(UserApi + 'checkin', cookies=r.cookies)
-    return dict(r.cookies)["session_token"]
+    return r.cookies.values
+
+def delete(cookie, url):
+    """
+    deletes files or folder
+    :param url: base with url
+    :return: request response
+    """
+    ApiBase = 'https://api.ensims.com/'
+    UserApi = ApiBase + 'users/api/'
+    r = requests.get(UserApi + 'info')
+    r.cookies.update({"session_token":cookie})
+    r = requests.delete(url, cookies = r.cookies)
+    return r.text
 
 def get(cookie, url):
     """
@@ -35,7 +47,7 @@ def get(cookie, url):
     r.cookies.update({"session_token":cookie})
 
     #get request
-    r = requests.get(url)
+    r = requests.get(url, cookies = r.cookies)
     return r.text
 
 def post(cookie, url):
@@ -50,13 +62,13 @@ def post(cookie, url):
     UserApi = ApiBase + 'users/api/'
     r = requests.get(UserApi + 'info')
     r.cookies.update({"session_token":cookie})
-    
     r = requests.post(url, cookies = r.cookies)
     return r.text
 
 if __name__ == "__main__":
     fire.Fire({
-        "get": get,
         "cookie": cookie,
+        "delete": delete,
+        "get": get,
         "post": post
     })
