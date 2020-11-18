@@ -65,10 +65,43 @@ def post(cookie, url):
     r = requests.post(url, cookies = r.cookies)
     return r.text
 
+def postf(cookie, url, file):
+    """
+    returns request post method
+    :param cookie: cookie
+    :param url: base with url
+    :param file: the filepath for the file or job set
+    :return: request response
+    """
+    #Update cookie
+    ApiBase = 'https://api.ensims.com/'
+    UserApi = ApiBase + 'users/api/'
+    JessApi = ApiBase + "jess_web/api/"
+    r = requests.get(JessApi + 'info')
+    r.cookies.update({"session_token":cookie})
+
+    """
+    file = [
+            ('file', ('5ZoneAirCooled-v93.idf', open('job_example\\5ZoneAirCooled-v93.idf', 'rb'), 'text/plain')),
+            ('file', ('in.epw', open('job_example\\in.epw', 'rb'), 'text/plain')),
+            ('title', 'Test job'),
+            ('desc', 'This is test submission made from python example'),
+            ('model', '5ZoneAirCooled-v93.idf'),
+            ('split', 'FALSE'),
+            ('weather', 'in.epw')
+            ]
+    """
+
+    file = eval(file)
+    r = requests.post(url, cookies = r.cookies, files=file)
+    return r.text
+    #return file
+
 if __name__ == "__main__":
     fire.Fire({
         "cookie": cookie,
         "delete": delete,
         "get": get,
-        "post": post
+        "post": post,
+        "postf": postf
     })
