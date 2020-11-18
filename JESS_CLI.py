@@ -23,7 +23,7 @@ def cookie(user_email, password):
 def delete(cookie, url):
     """
     deletes files or folder
-    :param url: base with url
+    :param url: base + url + (file or folder path)
     :return: request response
     """
     ApiBase = 'https://api.ensims.com/'
